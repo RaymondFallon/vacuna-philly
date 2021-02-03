@@ -1,0 +1,16 @@
+.container(data-controller="hello")
+  .row
+    .col-12
+      .card.my-4
+        .card-body
+          %h1.m-0 Wilkommen bei Vacuna COVID PHL!
+    .col-12
+      - @data.each do |_k, v|
+        .faq-card.card.mb-4{id: v['html_id']}
+          .card-body
+            %h2= v['q']
+            .row
+              .col-12.col-md-8
+                = v['a']
+              .col-12.col-md-4
+                %iframe{src: "https://youtube.com/embed/#{v['youtube_id']}"}
