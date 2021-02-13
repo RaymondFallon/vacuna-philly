@@ -1,3 +1,7 @@
+.absolute {
+  position: absolute !important;
+}
+
 .hidden {
   display: none !important;
 }
@@ -16,4 +20,10 @@
 
 .flex-no-wrap {
   flex-wrap: nowrap !important;
+}
+
+// This is imported from the FontAwesome CDN, but having it at the time of page load prevents jittering
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
 }

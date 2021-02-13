@@ -1,0 +1,28 @@
+.container
+  .row
+    .col-12.text-center
+      %h1.m-4 FAQ
+    .col-12
+      - @faqs.each do |faq|
+        - start_open = @html_id == faq.html_id_esp
+        .faq-card.card.elevation-4.mb-4{id: faq.html_id_esp, data: { controller: 'accordion' }}
+          .card-header.pl-0.flex.align-items-center.justify-content-between
+            .flex.align-items-center{ data: { controller: 'faq-link', 'faq-link-url': faq_url(faq.html_id_esp)}}
+              .faq-link-notifier.hidden.badge.badge-success(data-target="faq-link.notifier") Copiado!
+              %button.btn.faq-link-btn(data-action="faq-link#copy")
+                %i.fa.fa-fw.faw.fa-link
+              %h2.inline-block.mb-0.mr-4= faq.question_esp
+            %button.toggle-btn.btn.btn-sm.btn-secondary(data-action="accordion#toggle")
+              .toggle-btn-innards{'data-accordion-target': 'show', class: ('hidden' if start_open) }
+                %strong= '+'
+                %div Mas
+              .toggle-btn-innards{'data-accordion-target': 'hide', class: ('hidden' unless start_open) }
+                %strong= '-'
+                %div Menos
+          .collapse{'data-accordion-target': 'cardBody', class: ('show' if start_open)}
+            .card-body
+              .row
+                .col-12.col-md-8
+                  = faq.answer_esp
+                .col-12.col-md-4.text-center
+                  -#%iframe{src: "https://youtube.com/embed/#{faq.youtube_id_esp}"}
